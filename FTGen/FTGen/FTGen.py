@@ -45,7 +45,9 @@ def CarregaDadosFramedata():
     List = []
     LightsRgx = re.compile("LP|LK")
     MediumRgx = re.compile("MP|MK")
-    
+    NoClawRgx = re.compile("[\w\s]+(claw)")
+    Invalid = False
+
     for Boneco in Personagens:
         Teste2.clear()
         Lights.clear()
@@ -55,27 +57,32 @@ def CarregaDadosFramedata():
         #FT4F.clear()
         #FT5F.clear()
         for move in PeM[Boneco]:
-            if (isInt(data[Boneco]["moves"]["normal"][move]["onBlock"]) and isInt(data[Boneco]["moves"]["normal"][move]["startup"])):
+            if ((isInt(data[Boneco]["moves"]["normal"][move]["onBlock"]) and isInt(data[Boneco]["moves"]["normal"][move]["startup"])) and (isInt(data[Boneco]["moves"]["normal"][move]["recovery"]))):
                 if (int(data[Boneco]["moves"]["normal"][move]["onBlock"] > 0)):
                     onblock = int(data[Boneco]["moves"]["normal"][move]["onBlock"]) + 3 #3 é o gap de frames
                     #onblock4 = int(data[Boneco]["moves"]["normal"][move]["onBlock"]) + 4 #4 é o gap de frames
                     #onblock5 = int(data[Boneco]["moves"]["normal"][move]["onBlock"]) + 5 #5 é o gap de frames
                     for move2 in PeM[Boneco]:
+                        Invalid = False
                         if ((isInt(data[Boneco]["moves"]["normal"][move2]["startup"]) and isInt(data[Boneco]["moves"]["normal"][move2]["onBlock"]) and isInt(data[Boneco]["moves"]["normal"][move2]["recovery"])) and int(data[Boneco]["moves"]["normal"][move2]["onBlock"]) >= -2):
                             startup = int(data[Boneco]["moves"]["normal"][move2]["startup"])
-                            if onblock >= startup:
-                                # Se e o move eh light, coloca na light
-                                if (re.search(LightsRgx,move)):
-                                    Lights.append((move, move2))
-                                elif (re.search(MediumRgx, move)):
-                                    Medium.append((move, move2))
+                            if ((re.search(MediumRgx, move2) and (onblock >= startup)) or (not re.search(MediumRgx, move2) and (onblock > startup))):
+                            #if onblock >= startup:
+                                if (Boneco == "Vega"):
+                                    if(re.search(NoClawRgx, move) and re.search(NoClawRgx, move2)):
+                                        Invalid = True
+                                    elif(not re.search(NoClawRgx, move) and not re.search(NoClawRgx, move2)):
+                                        Invalid = True
                                 else:
-                                    Others.append((move, move2))
-                                Teste2.append((move, move2))
-                            #if onblock4 >= startup:
-                            #    FT4F.append((move, move2))
-                            #if onblock5 >= startup:
-                            #    FT5F.append((move, move2))
+                                    Invalid = True
+                                if (Invalid):
+                                    if (re.search(LightsRgx,move)):
+                                        Lights.append((move, move2))
+                                    elif (re.search(MediumRgx, move)):
+                                        Medium.append((move, move2))
+                                    else:
+                                        Others.append((move, move2))
+                                    Teste2.append((move, move2))
         FrameTraps[Boneco] = list(Teste2)
         List.append(list(Lights))
         List.append(list(Medium))
