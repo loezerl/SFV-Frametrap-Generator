@@ -18,12 +18,11 @@ header1 = """
 <pre class="western"><font color="999999">
 """
 
-Boneco1 = """
-<strong><span style="color: #ff9900;">"""
+Boneco1 = """<h2><strong><span style="color: #ff9900;">"""
 #Nome do Boneco
-
-Boneco2 = """: </span></strong><br><br><span style="color: #009999;">"Frametraps Starting with Light Normals - BEAT 3F"</span>
-"""
+Boneco2 = """:</span></strong></h2>"""
+Titulo1 = """<br><span style="color: #009999;">"Framedata"</span><br>"""
+Titulo2 = """<br><span style="color: #009999;">"Possible Frametraps (beats 3F normals)"</span><br>"""
 
 header2 = """
 <style style="text/css">
@@ -42,10 +41,34 @@ header2 = """
           background-color: 505055;
     }
 </style>
+"""
+
+tabelaFT = """
 <table class="hoverTable">
 <tbody>
 <td nowrap="nowrap"><strong><span style="color: #ff9900;">Moves:&nbsp;&nbsp;&nbsp;&nbsp;</span></strong></td>
 """
+
+tabelaFD = """
+<table class="hoverTable">
+<tbody><tr>
+<td nowrap="nowrap"><strong><span style="color: #ff9900;">Moves&nbsp;&nbsp;&nbsp;&nbsp;</span></strong></td>
+<td nowrap="nowrap"><strong><span style="color: #ff9900;">Command&nbsp;&nbsp;&nbsp;&nbsp;</span></strong></td>
+<td nowrap="nowrap"><strong><span style="color: #ff9900;">Startup&nbsp;&nbsp;&nbsp;&nbsp;</span></strong></td>
+<td nowrap="nowrap"><strong><span style="color: #ff9900;">Active&nbsp;&nbsp;&nbsp;&nbsp;</span></strong></td>
+<td nowrap="nowrap"><strong><span style="color: #ff9900;">Recovery&nbsp;&nbsp;&nbsp;&nbsp;</span></strong></td>
+<td nowrap="nowrap"><strong><span style="color: #ff9900;">OnHit&nbsp;&nbsp;&nbsp;&nbsp;</span></strong></td>
+<td nowrap="nowrap"><strong><span style="color: #ff9900;">OnBlock&nbsp;&nbsp;&nbsp;&nbsp;</span></strong></td>
+<td nowrap="nowrap"><strong><span style="color: #ff9900;">Information&nbsp;&nbsp;&nbsp;&nbsp;</span></strong></td></tr>
+"""
+
+linhafd0 = "<tr>"
+linhafd = """<td nowrap="nowrap"><font color="999999">"""
+linhavt = """<tr><td nowrap="nowrap"><strong><span style="color: #ff9900;">VTrigger:</span></strong></td></tr>"""
+linhafd2 = """&nbsp;&nbsp;</font></td>"""
+
+linhafd3 = """</tr>"""
+
 
 linha1 = """
 <tr>
@@ -58,8 +81,8 @@ linha2 = """
 </tr>
 """
 
+endtable = """</tbody></table><br>"""
 bottom = """
-</tbody></table><br>
 <strong><span style="color: #ff9900;">Discord Street Fighter Brasil
 <a href="https://discord.me/sfvbrasil">https://discord.me/sfvbrasil
 <br></a></span></strong></font></pre><font color="999999">
