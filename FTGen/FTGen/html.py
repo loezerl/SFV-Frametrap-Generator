@@ -18,11 +18,11 @@ header1 = """
 <pre class="western"><font color="999999">
 """
 
-Boneco1 = """<h2><strong><span style="color: #ff9900;">"""
+Boneco1 = """<strong><span style="color: #ff9900;">"""
 #Nome do Boneco
-Boneco2 = """:</span></strong></h2>"""
-Titulo1 = """<br><span style="color: #009999;">"Framedata"</span><br>"""
-Titulo2 = """<br><span style="color: #009999;">"Possible Frametraps (beats 3F normals)"</span><br>"""
+Boneco2 = """</span></strong>"""
+Titulo1 = """<br><span style="color: #009999;">"Framedata"</span>"""
+Titulo2 = """<br><span style="color: #009999;">Possible Frametraps (beats 3F normals)</span>"""
 
 header2 = """
 <style style="text/css">
